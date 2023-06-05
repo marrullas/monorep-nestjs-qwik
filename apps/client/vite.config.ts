@@ -16,6 +16,7 @@ export default defineConfig({
       ssr: {
         outDir: '../../dist/apps/client/server',
       },
+
     }),
     tsconfigPaths({ root: '../../' }),
   ],
@@ -24,6 +25,12 @@ export default defineConfig({
       // Allow serving files from the project root
       allow: ['../../'],
     },
+    proxy:{
+      '/api': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+      }
+    }
   },
   preview: {
     headers: {

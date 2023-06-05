@@ -1,20 +1,21 @@
-import { component$, Slot } from '@builder.io/qwik';
-import Header from '../components/header/header';
+import { component$, Slot, useStyles$ } from '@builder.io/qwik';
 
+
+import Header from '../components/header/header';
+import Footer from '../components/footer/footer';
+
+import styles from './styles.css?inline';
 export default component$(() => {
+  useStyles$(styles);
   return (
     <>
       <main>
         <Header />
-        <section>
-          <Slot />
-        </section>
+        <main class="flex flex-col items-center justify-center">
+        <Slot />
       </main>
-      <footer>
-        <a href="https://www.builder.io/" target="_blank">
-          Made with ♡ by Builder.io
-        </a>
-      </footer>
+      </main>
+      <Footer />
     </>
   );
 });
